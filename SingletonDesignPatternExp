@@ -1,0 +1,27 @@
+package harpriya.designpatterns.singleton;
+
+class SingletonDesignPatternExp 
+{ 
+      private static SingletonDesignPatternExp obj; 
+  
+      //eager initantiation in case its light
+      // private static SingletonDesignPatternExp obj = new SingletonDesignPatternExp(); 
+            
+  //private constructor to avoid instantiation of object by outside world
+    private SingletonDesignPatternExp() {} 
+  
+    public static SingletonDesignPatternExp getInstance() 
+    { 
+        if (obj == null) 
+        { 
+            // To make thread safe 
+            synchronized (SingletonDesignPatternExp.class) 
+            { 
+                // check again as multiple threads can reach above step 
+                if (obj==null) 
+                    obj = new SingletonDesignPatternExp(); 
+            } 
+        } 
+        return obj; 
+    } 
+} 
